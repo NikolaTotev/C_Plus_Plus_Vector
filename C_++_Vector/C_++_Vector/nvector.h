@@ -22,9 +22,6 @@ private:
 	//Pointer to the initializer_list.
 	pointerToInit currentInit_ = nullptr;
 
-
-
-
 public:
 	nList(initializer_list<listType> listToAssign)
 	{
@@ -56,7 +53,7 @@ public:
 
 		temp = new listType[newSize];
 
-		for (int i = 0; i < currentSize; i++)
+		for (size_t i = 0; i < currentSize; i++)
 		{
 			temp[i] = current_[i];
 		}
@@ -65,29 +62,29 @@ public:
 		delete current_;
 		current_ = new listType[currentSize];
 
-		for (int i = 0; i < currentSize; i++)
+		for (size_t i = 0; i < currentSize; i++)
 		{
 			current_[i] = temp[i];
 		}
 		delete temp;
 	}
 
-	void Delete(listType itemToRemove)
+	void Remove(listType itemToRemove)
 	{
 		size_t newSize = currentSize - 1;
 
 
 		temp = new listType[newSize];
 
-		int posToRemoveAt = 0;
+		size_t posToRemoveAt = 0;
 
-		for (int i = 0; i < currentSize; i++)
+		for (size_t i = 0; i < currentSize; i++)
 		{
 			temp[i] = current_[i];
 		}
 
 		//TODO this won't work well for type float. 
-		for (int i = 0; i < currentSize; i++)
+		for (size_t i = 0; i < currentSize; i++)
 		{
 			if (current_[i] == itemToRemove)
 			{
@@ -96,7 +93,7 @@ public:
 			}
 		}
 
-		for (int i = posToRemoveAt; i < currentSize; i++)
+		for (size_t i = posToRemoveAt; i < currentSize; i++)
 		{
 			temp[i] = current_[i + 1];			
 		}
@@ -105,7 +102,7 @@ public:
 		delete current_;
 		current_ = new listType[currentSize];
 
-		for (int i = 0; i < currentSize; i++)
+		for (size_t i = 0; i < currentSize; i++)
 		{
 			current_[i] = temp[i];
 		}
