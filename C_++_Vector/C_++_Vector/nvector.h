@@ -10,11 +10,11 @@ class nList
 
 private:
 
-	size_t defaultSize = (listSize!=0) ? 0:listSize;
+	size_t defaultSize = (listSize != 0) ? 0 : listSize;
 	size_t currentSize = 0;
 
 	//Pointer to the current array of elements
-	pointerToArray current_  = nullptr;
+	pointerToArray current_ = nullptr;
 
 	//Pointer for the temporary array of elements used when adding/removing elements.
 	pointerToArray temp = nullptr;
@@ -27,7 +27,7 @@ private:
 
 public:
 	nList(initializer_list<listType> listToAssign)
-	{		
+	{
 		currentInit_ = &listToAssign;
 		assignCurrentArray(currentInit_);
 
@@ -41,14 +41,11 @@ public:
 
 private:
 	//At the moment it just assigns the first element of currentInit to the first element of current.
-	void assignCurrentArray (pointerToInit listToAssign)
+	void assignCurrentArray(pointerToInit listToAssign)
 	{
 		current_ = new listType[currentInit_->size()];
 		copy(currentInit_->begin(), currentInit_->end(), current_);
 		currentSize = currentInit_->size();
-		cout << current_[0];
-		cout << current_[1];
-		cout << current_[2];
 	}
 
 public:
@@ -59,7 +56,7 @@ public:
 
 		temp = new listType[newSize];
 
-		for(int i = 0; i < currentSize; i ++)
+		for (int i = 0; i < currentSize; i++)
 		{
 			temp[i] = current_[i];
 		}
@@ -72,13 +69,51 @@ public:
 		{
 			current_[i] = temp[i];
 		}
+		delete temp;
+	}
 
-	
+	void Delete(listType itemToRemove)
+	{
+		size_t newSize = currentSize - 1;
+
+
+		temp = new listType[newSize];
+
+		int posToRemoveAt = 0;
+
+		for (int i = 0; i < currentSize; i++)
+		{
+			temp[i] = current_[i];
+		}
+
+		//TODO this won't work well for type float. 
+		for (int i = 0; i < currentSize; i++)
+		{
+			if (current_[i] == itemToRemove)
+			{
+				posToRemoveAt = i;
+				break;
+			}
+		}
+
+		for (int i = posToRemoveAt; i < currentSize; i++)
+		{
+			temp[i] = current_[i + 1];			
+		}
+		currentSize -= 1;
+
+		delete current_;
+		current_ = new listType[currentSize];
+
+		for (int i = 0; i < currentSize; i++)
+		{
+			current_[i] = temp[i];
+		}
 
 		delete temp;
 	}
 
 private:
-	
+
 };
 

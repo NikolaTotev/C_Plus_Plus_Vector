@@ -1,6 +1,21 @@
 ﻿  C_++_Vector.cpp
-d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(62): warning C4018: '<': signed/unsigned mismatch
-  d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(56): note: while compiling class template member function 'void nList<int,10>::Add(listType)'
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(84): warning C4018: '<': signed/unsigned mismatch
+  d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(76): note: while compiling class template member function 'void nList<int,10>::Delete(listType)'
+          with
+          [
+              listType=int
+          ]
+  d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(20): note: see reference to function template instantiation 'void nList<int,10>::Delete(listType)' being compiled
+          with
+          [
+              listType=int
+          ]
+  d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(13): note: see reference to class template instantiation 'nList<int,10>' being compiled
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(90): warning C4018: '<': signed/unsigned mismatch
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(99): warning C4018: '<': signed/unsigned mismatch
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(108): warning C4018: '<': signed/unsigned mismatch
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(59): warning C4018: '<': signed/unsigned mismatch
+  d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(53): note: while compiling class template member function 'void nList<int,10>::Add(listType)'
           with
           [
               listType=int
@@ -10,6 +25,5 @@ d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector
           [
               listType=int
           ]
-  d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(13): note: see reference to class template instantiation 'nList<int,10>' being compiled
-d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(71): warning C4018: '<': signed/unsigned mismatch
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(68): warning C4018: '<': signed/unsigned mismatch
   C_++_Vector.vcxproj -> D:\Documents\Learning\C++\C_++_Vector\C_Plus_Plus_Vector\C_++_Vector\Debug\C_++_Vector.exe
