@@ -30,7 +30,14 @@ public:
 	{		
 		currentInit_ = &listToAssign;
 		assignCurrentArray(currentInit_);
+
+
 	};
+
+	//TODO add check if X is within the bounds of the list.
+	listType& operator[] (int x) {
+		return current_[x];
+	}
 
 private:
 	//At the moment it just assigns the first element of currentInit to the first element of current.
@@ -51,10 +58,23 @@ public:
 		currentSize += 1;
 
 		temp = new listType[newSize];
-		begin(current_);
-		end(current_);
-		//copy(current_, end(current_), temp);
-		temp[newSize - 1] = itemToAdd;	
+
+		for(int i = 0; i < currentSize; i ++)
+		{
+			temp[i] = current_[i];
+		}
+		temp[newSize - 1] = itemToAdd;
+
+		delete current_;
+		current_ = new listType[currentSize];
+
+		for (int i = 0; i < currentSize; i++)
+		{
+			current_[i] = temp[i];
+		}
+
+	
+
 		delete temp;
 	}
 

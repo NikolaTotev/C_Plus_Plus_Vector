@@ -1,23 +1,15 @@
 ﻿  C_++_Vector.cpp
-d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(40): error C2672: 'begin': no matching overloaded function found
-  d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(38): note: while compiling class template member function 'void nList<int,10>::assignCurrentArray(std::initializer_list<listType> *)'
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(62): warning C4018: '<': signed/unsigned mismatch
+  d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(56): note: while compiling class template member function 'void nList<int,10>::Add(listType)'
           with
           [
               listType=int
           ]
-  d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(32): note: see reference to function template instantiation 'void nList<int,10>::assignCurrentArray(std::initializer_list<listType> *)' being compiled
+  d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(17): note: see reference to function template instantiation 'void nList<int,10>::Add(listType)' being compiled
           with
           [
               listType=int
           ]
   d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(13): note: see reference to class template instantiation 'nList<int,10>' being compiled
-d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(40): error C2893: Failed to specialize function template 'unknown-type std::begin(_Container &)'
-  d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(40): note: With the following template arguments:
-  d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(40): note: '_Container=int *'
-d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(40): error C2784: 'const _Elem *std::begin(std::initializer_list<_Elem>) noexcept': could not deduce template argument for 'std::initializer_list<_Elem>' from 'int *'
-  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\initializer_list(62): note: see declaration of 'std::begin'
-d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(40): error C2672: 'copy': no matching overloaded function found
-d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(40): error C2780: '_DestTy *std::copy(_InIt,_InIt,_DestTy (&)[_DestSize])': expects 3 arguments - 2 provided
-  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\xutility(2453): note: see declaration of 'std::copy'
-d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(40): error C2780: '_OutIt std::copy(_InIt,_InIt,_OutIt)': expects 3 arguments - 2 provided
-  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\xutility(2439): note: see declaration of 'std::copy'
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(71): warning C4018: '<': signed/unsigned mismatch
+  C_++_Vector.vcxproj -> D:\Documents\Learning\C++\C_++_Vector\C_Plus_Plus_Vector\C_++_Vector\Debug\C_++_Vector.exe
