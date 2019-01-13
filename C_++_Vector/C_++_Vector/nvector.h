@@ -1,6 +1,13 @@
 #pragma once
 #include <iostream>
+#include <stdexcept>
+
 using namespace std;
+
+//TODO Make sure it works properly for floats.
+//TODO Add error handling for all functions!
+//TODO Add input validation!
+//TODO Learn to throw exceptions.
 
 template<class listType, size_t listSize>
 class nList
@@ -73,6 +80,11 @@ public:
 
 	void InsertAt(listType itemToInsert, size_t insertPosition)
 	{
+		if(insertPosition > currentSize)
+		{
+			throw std::invalid_argument("Oui, insert position out of bounds!");
+		}
+
 		size_t newSize = currentSize + 1;
 		temp = new listType[newSize];
 
