@@ -49,15 +49,17 @@ public:
 	void Add(listType itemToAdd)
 	{
 		size_t newSize = currentSize + 1;
-		currentSize += 1;
 
 		temp = new listType[newSize];
 
-		for (size_t i = 0; i < currentSize; i++)
+		for (size_t i = 0; i < newSize; i++)
 		{
 			temp[i] = current_[i];
 		}
+
 		temp[newSize - 1] = itemToAdd;
+
+		currentSize += 1;
 
 		delete current_;
 		current_ = new listType[currentSize];
@@ -66,6 +68,33 @@ public:
 		{
 			current_[i] = temp[i];
 		}
+		delete temp;
+	}
+
+	void Insert(listType itemToInsert, size_t insertPosition)
+	{
+		size_t newSize = currentSize + 1;
+		temp = new listType[newSize];
+
+		for (size_t i = 0; i < newSize; i++)
+		{
+			temp[i] = current_[i];
+		}
+
+		temp[insertPosition] = itemToInsert;
+
+		currentSize += 1;
+
+		for(size_t i = insertPosition+1; i < newSize; i++)
+		{
+			temp[i] = current_[i-1];
+		}
+
+		for(int i = 0; i < newSize; i++)
+		{
+			cout << temp[i];
+		}
+
 		delete temp;
 	}
 
@@ -95,7 +124,7 @@ public:
 
 		for (size_t i = posToRemoveAt; i < currentSize; i++)
 		{
-			temp[i] = current_[i + 1];			
+			temp[i] = current_[i + 1];
 		}
 		currentSize -= 1;
 
@@ -115,7 +144,7 @@ public:
 		size_t newSize = currentSize - 1;
 
 
-		temp = new listType[newSize];		
+		temp = new listType[newSize];
 
 		for (size_t i = 0; i < currentSize; i++)
 		{
