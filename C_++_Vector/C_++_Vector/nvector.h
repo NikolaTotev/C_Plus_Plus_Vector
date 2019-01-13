@@ -1,15 +1,16 @@
 #pragma once
 #include <iostream>
 #include <stdexcept>
+#include <assert.h>
 
 using namespace std;
 
 //TODO Make sure it works properly for floats.
-//TODO Add error handling for all functions!
-//TODO Add input validation!
+//TODO push_back error handling for all functions!
+//TODO push_back input validation!
 //TODO Learn to throw exceptions.
 
-template<class listType, size_t listSize>
+template<class listType>
 class nList
 {
 	typedef listType* pointerToArray;
@@ -17,7 +18,7 @@ class nList
 
 private:
 
-	size_t defaultSize = (listSize != 0) ? 0 : listSize;
+	//	size_t defaultSize = (listSize != 0) ? 0 : listSize;
 	size_t currentSize = 0;
 
 	//Pointer to the current array of elements
@@ -53,7 +54,29 @@ private:
 	}
 
 public:
-	void Add(listType itemToAdd)
+
+	void assign(pointerToArray vectorToAssign)
+	{
+		
+	}
+
+	/// <summary>Returns first element of the vector.
+	/// </summary>
+	listType front()
+	{
+		return  current_[0];
+	}
+
+	/// <summary>Returns last element of the vector.
+	/// </summary>
+	listType end()
+	{
+		return current_[currentSize - 1];
+	}
+
+	/// <summary>Adds item to the end of the vector.
+	/// </summary>
+	void push_back(listType itemToAdd)
 	{
 		size_t newSize = currentSize + 1;
 
@@ -78,17 +101,40 @@ public:
 		delete temp;
 	}
 
-	void InsertAt(listType itemToInsert, size_t insertPosition)
+	/// <summary>Removes last item in the vector.
+	/// </summary>
+	void pop_back()
 	{
-		if(insertPosition > currentSize)
+		size_t new_size = currentSize - 1;
+
+		temp = new listType[new_size];
+
+		for (size_t i = 0; i < new_size; i++)
 		{
-			throw std::invalid_argument("Oui, insert position out of bounds!");
+			temp[i] = current_[i];
 		}
 
-		size_t newSize = currentSize + 1;
-		temp = new listType[newSize];
 
-		for (size_t i = 0; i < newSize; i++)
+		currentSize -= 1;
+
+		delete current_;
+		current_ = new listType[currentSize];
+
+		for (size_t i = 0; i < currentSize; i++)
+		{
+			current_[i] = temp[i];
+		}
+		delete temp;
+	}
+
+	/// <summary>Inserts item at a given position.
+	/// </summary>
+	void insert_at(listType itemToInsert, int insertPosition)
+	{
+		size_t new_size = currentSize + 1;
+		temp = new listType[new_size];
+
+		for (size_t i = 0; i < new_size; i++)
 		{
 			temp[i] = current_[i];
 		}
@@ -97,12 +143,12 @@ public:
 
 		currentSize += 1;
 
-		for (size_t i = insertPosition + 1; i < newSize; i++)
+		for (int i = insertPosition + 1; i < new_size; i++)
 		{
 			temp[i] = current_[i - 1];
 		}
 
-		for (int i = 0; i < newSize; i++)
+		for (int i = 0; i < new_size; i++)
 		{
 			cout << temp[i];
 		}
@@ -110,12 +156,14 @@ public:
 		delete temp;
 	}
 
-	void Remove(listType itemToRemove)
+	/// <summary>Removes item in the list based on its value.
+	/// </summary>
+	void remove(listType itemToRemove)
 	{
-		size_t newSize = currentSize - 1;
+		size_t new_size = currentSize - 1;
 
 
-		temp = new listType[newSize];
+		temp = new listType[new_size];
 
 		size_t posToRemoveAt = 0;
 
@@ -125,14 +173,27 @@ public:
 		}
 
 		//TODO this won't work well for type float. 
-		for (size_t i = 0; i < currentSize; i++)
-		{
-			if (current_[i] == itemToRemove)
+
+		
+			for (size_t i = 0; i < currentSize; i++)
 			{
-				posToRemoveAt = i;
-				break;
+				if (is_same_v<listType, float>)
+				{
+					const float eps = 0.0001;
+					if(current_[i] > eps )
+				}
+				else
+				{
+					if (current_[i] == itemToRemove)
+					{
+						posToRemoveAt = i;
+						break;
+					}
+				}
+				
 			}
-		}
+		
+		
 
 		for (size_t i = posToRemoveAt; i < currentSize; i++)
 		{
@@ -151,19 +212,20 @@ public:
 		delete temp;
 	}
 
-	void RemoveAt(size_t posToRemoveAt)
+	/// <summary>Removes the element at a specified position.
+	/// </summary>
+	void remove_at(int posToRemoveAt)
 	{
-		size_t newSize = currentSize - 1;
+		size_t new_size = currentSize - 1;
 
-
-		temp = new listType[newSize];
+		temp = new listType[new_size];
 
 		for (size_t i = 0; i < currentSize; i++)
 		{
 			temp[i] = current_[i];
 		}
 
-		for (size_t i = posToRemoveAt; i < currentSize; i++)
+		for (int i = posToRemoveAt; i < currentSize; i++)
 		{
 			temp[i] = current_[i + 1];
 		}
@@ -180,14 +242,18 @@ public:
 		delete temp;
 	}
 
-	void Empty()
+	/// <summary>Removes all data from the array.
+	/// </summary>
+	void clear()
 	{
 		delete current_;
 		current_ = new listType[0];
 		currentSize = 0;
 	}
 
-	int Find(listType itemToFind)
+	/// <summary>Finds the position a given element is located.
+	/// </summary>
+	int find(listType itemToFind)
 	{
 		for (int i = 0; i < currentSize; i++)
 		{
@@ -200,20 +266,30 @@ public:
 		return -1;
 	}
 
-	void Swap(int pos_1, int pos_2)
+	/// <summary>Swaps the value of pos_1 with the value at pos_2 and vice versa.	
+	/// </summary>
+	void swap_values(int pos_1, int pos_2)
 	{
 		listType temp_1 = current_[pos_1];
 		listType temp_2 = current_[pos_2];
 
 		current_[pos_1] = temp_2;
-		current_[pos_2] = temp_1;		
+		current_[pos_2] = temp_1;
 	}
 
-	int Size()
-	{		
+	/// <summary>Returns an integer equal to the size of the current vector.
+	/// </summary>
+	int size()
+	{
 		return  currentSize;
 	}
 
+	/// <summary>Returns pointer to the array used to store the elements of the vector.
+	/// </summary>
+	pointerToArray data()
+	{
+		return current_;
+	}
 
 private:
 
