@@ -71,7 +71,7 @@ public:
 		delete temp;
 	}
 
-	void Insert(listType itemToInsert, size_t insertPosition)
+	void InsertAt(listType itemToInsert, size_t insertPosition)
 	{
 		size_t newSize = currentSize + 1;
 		temp = new listType[newSize];
@@ -85,12 +85,12 @@ public:
 
 		currentSize += 1;
 
-		for(size_t i = insertPosition+1; i < newSize; i++)
+		for (size_t i = insertPosition + 1; i < newSize; i++)
 		{
-			temp[i] = current_[i-1];
+			temp[i] = current_[i - 1];
 		}
 
-		for(int i = 0; i < newSize; i++)
+		for (int i = 0; i < newSize; i++)
 		{
 			cout << temp[i];
 		}
@@ -167,6 +167,41 @@ public:
 
 		delete temp;
 	}
+
+	void Empty()
+	{
+		delete current_;
+		current_ = new listType[0];
+		currentSize = 0;
+	}
+
+	int Find(listType itemToFind)
+	{
+		for (int i = 0; i < currentSize; i++)
+		{
+			if (current_[i] == itemToFind)
+			{
+				return i;
+			}
+		}
+
+		return -1;
+	}
+
+	void Swap(int pos_1, int pos_2)
+	{
+		listType temp_1 = current_[pos_1];
+		listType temp_2 = current_[pos_2];
+
+		current_[pos_1] = temp_2;
+		current_[pos_2] = temp_1;		
+	}
+
+	int Size()
+	{		
+		return  currentSize;
+	}
+
 
 private:
 
