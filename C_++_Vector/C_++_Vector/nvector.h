@@ -110,6 +110,35 @@ public:
 		delete temp;
 	}
 
+	void RemoveAt(size_t posToRemoveAt)
+	{
+		size_t newSize = currentSize - 1;
+
+
+		temp = new listType[newSize];		
+
+		for (size_t i = 0; i < currentSize; i++)
+		{
+			temp[i] = current_[i];
+		}
+
+		for (size_t i = posToRemoveAt; i < currentSize; i++)
+		{
+			temp[i] = current_[i + 1];
+		}
+		currentSize -= 1;
+
+		delete current_;
+		current_ = new listType[currentSize];
+
+		for (size_t i = 0; i < currentSize; i++)
+		{
+			current_[i] = temp[i];
+		}
+
+		delete temp;
+	}
+
 private:
 
 };
