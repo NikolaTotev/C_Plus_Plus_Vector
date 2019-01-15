@@ -1,2 +1,6 @@
 ﻿  C_++_Vector.cpp
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(49): warning C4018: '<': signed/unsigned mismatch
+  d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(45): note: while compiling class template member function 'void nList<double>::operator =(const nList<double> &)'
+  d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(95): note: see reference to function template instantiation 'void nList<double>::operator =(const nList<double> &)' being compiled
+  d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(10): note: see reference to class template instantiation 'nList<double>' being compiled
   C_++_Vector.vcxproj -> D:\Documents\Learning\C++\C_++_Vector\C_Plus_Plus_Vector\C_++_Vector\Debug\C_++_Vector.exe
