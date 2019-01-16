@@ -1,6 +1,66 @@
 ﻿  C_++_Vector.cpp
-d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(49): warning C4018: '<': signed/unsigned mismatch
-  d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(45): note: while compiling class template member function 'void nList<double>::operator =(const nList<double> &)'
-  d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(95): note: see reference to function template instantiation 'void nList<double>::operator =(const nList<double> &)' being compiled
-  d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(10): note: see reference to class template instantiation 'nList<double>' being compiled
-  C_++_Vector.vcxproj -> D:\Documents\Learning\C++\C_++_Vector\C_Plus_Plus_Vector\C_++_Vector\Debug\C_++_Vector.exe
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(72): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(73): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(74): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(75): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(76): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(77): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(78): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(79): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(80): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(81): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(82): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(83): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(84): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(85): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(86): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(87): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(88): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(89): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(90): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(91): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(93): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(94): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(95): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(97): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(98): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(100): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(101): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(103): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(104): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(106): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(107): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(109): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(110): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(112): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(113): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(115): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(116): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(118): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(119): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(121): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(122): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(124): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(125): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(127): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(128): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(130): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(131): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(133): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(134): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(136): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(137): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(139): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(140): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(142): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(143): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(145): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(146): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(148): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(149): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(151): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(152): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(159): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(162): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(164): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+LINK : fatal error LNK1168: cannot open D:\Documents\Learning\C++\C_++_Vector\C_Plus_Plus_Vector\C_++_Vector\Debug\C_++_Vector.exe for writing
