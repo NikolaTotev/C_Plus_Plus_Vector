@@ -52,13 +52,6 @@ public:
 	nList() = default;
 
 	//TODO add check if X is within the bounds of the list.
-	T& operator[] (int x) {
-		if (x >= currentSize)
-		{
-			return _current[-1];
-		}
-		return _current[x];
-	}
 
 	void operator = (const nList& D) {
 
@@ -79,8 +72,6 @@ private:
 		currentSize = currentInit_->size();
 		currentCapacity = currentInit_->size();
 	}
-
-
 
 	void reallocate(int newSize)
 	{
@@ -144,11 +135,60 @@ private:
 
 	}
 
-public:
-
-	void assign(T* vectorToAssign)
+public:	 	
+#pragma region Capacity
+	/// <summary>Returns an integer equal to the size of the current vector.
+	/// </summary>
+	int size()
 	{
+		return currentSize;
+	}
 
+	//TODO Max Size
+
+	void resize(int newSize)
+	{
+		if (newSize >= currentSize)
+		{
+			reallocate(newSize);
+		}
+	}
+
+	int capacity()
+	{
+		return currentCapacity;
+	}
+
+	//TODO empty
+
+	void reserve(int newSize)
+	{
+		if (newSize > currentCapacity && newSize > currentSize)
+		{
+			reallocate(newSize);
+		}
+	}
+
+	//TODO shrink_to_fit
+
+#pragma endregion 
+
+#pragma region Element Access
+	T& operator[] (int x) {
+		if (x >= currentSize)
+		{
+			return _current[-1];
+		}
+		return _current[x];
+	}
+
+	T& at(int x)
+	{
+		if (x <= currentSize)
+		{
+			return _current[x];
+		}
+		return _current[-1];
 	}
 
 	/// <summary>Returns first element of the vector.
@@ -163,6 +203,20 @@ public:
 	T end()
 	{
 		return _current[currentSize - 1];
+	}
+
+	/// <summary>Returns pointer to the array used to store the elements of the vector.
+	/// </summary>
+	T* data()
+	{
+		return _current;
+	}
+#pragma endregion 
+
+#pragma region Modifiers
+	void assign(T* vectorToAssign)
+	{
+
 	}
 
 	/// <summary>Adds item to the end of the vector.
@@ -190,6 +244,7 @@ public:
 		currentSize -= 1;
 	}
 
+
 	/// <summary>Inserts item at a given position.
 	/// </summary>
 	void insert(T itemToInsert, int insertPosition)
@@ -213,9 +268,56 @@ public:
 				_current[i] = _current[i - 1];
 			}
 			_current[insertPosition] = itemToInsert;
-		}		
+		}
 	}
 
+	/// <summary>Removes the element at a specified position.
+	/// </summary>
+	void erase(int posToRemoveAt)
+	{
+		size_t new_size = currentSize - 1;
+
+		temp = new T[new_size];
+
+		for (size_t i = 0; i < currentSize; i++)
+		{
+			temp[i] = _current[i];
+		}
+
+		for (int i = posToRemoveAt; i < currentSize; i++)
+		{
+			temp[i] = _current[i + 1];
+		}
+		currentSize -= 1;
+
+		delete _current;
+		_current = new T[currentSize];
+
+		for (size_t i = 0; i < currentSize; i++)
+		{
+			_current[i] = temp[i];
+		}
+
+		delete[] temp;
+	}
+
+	//TODO Swap
+
+	/// <summary>Removes all data from the array.
+	/// </summary>
+	void clear()
+	{
+		delete _current;
+		_current = new T[0];
+		currentSize = 0;
+	}
+
+	//TODO emplace
+
+	//TODO emplace_back
+#pragma endregion 
+
+#pragma region Custom
 	/// <summary>Removes item in the list based on its value.
 	/// </summary>
 	void remove(T itemToRemove)
@@ -272,48 +374,8 @@ public:
 		delete[] temp;
 	}
 
-	/// <summary>Removes the element at a specified position.
-	/// </summary>
-	void erase(int posToRemoveAt)
-	{
-		size_t new_size = currentSize - 1;
-
-		temp = new T[new_size];
-
-		for (size_t i = 0; i < currentSize; i++)
-		{
-			temp[i] = _current[i];
-		}
-
-		for (int i = posToRemoveAt; i < currentSize; i++)
-		{
-			temp[i] = _current[i + 1];
-		}
-		currentSize -= 1;
-
-		delete _current;
-		_current = new T[currentSize];
-
-		for (size_t i = 0; i < currentSize; i++)
-		{
-			_current[i] = temp[i];
-		}
-
-		delete[] temp;
-	}
-
-
-	/// <summary>Removes all data from the array.
-	/// </summary>
-	void clear()
-	{
-		delete _current;
-		_current = new T[0];
-		currentSize = 0;
-	}
-
 	/// <summary>Finds the position a given element is located.
-	/// </summary>
+    /// </summary>
 	int find(T itemToFind)
 	{
 		for (int i = 0; i < currentSize; i++)
@@ -328,7 +390,7 @@ public:
 	}
 
 	/// <summary>Swaps the value of pos_1 with the value at pos_2 and vice versa.	
-	/// </summary>
+    /// </summary>
 	void swap_values(int pos_1, int pos_2)
 	{
 		T temp_1 = _current[pos_1];
@@ -337,41 +399,6 @@ public:
 		_current[pos_1] = temp_2;
 		_current[pos_2] = temp_1;
 	}
-
-	/// <summary>Returns an integer equal to the size of the current vector.
-	/// </summary>
-	int size()
-	{
-		return currentSize;
-	}
-
-	int capacity()
-	{
-		return currentCapacity;
-	}
-	/// <summary>Returns pointer to the array used to store the elements of the vector.
-	/// </summary>
-	T* data()
-	{
-		return _current;
-	}
-
-	void resize(int newSize)
-	{
-		if (newSize >= currentSize)
-		{
-			reallocate(newSize);
-		}
-	}
-
-	void reserve(int newSize)
-	{
-		if(newSize > currentCapacity && newSize > currentSize)
-		{
-			reallocate(newSize);
-		}
-	}
-private:
-
+#pragma endregion 
 };
 
