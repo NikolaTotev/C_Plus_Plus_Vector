@@ -17,8 +17,11 @@ class nList
 
 private:
 	const double EPS = 0.001;
+	const int DEFAULT_SIZE = 1;
 	//	size_t defaultSize = (listSize != 0) ? 0 : listSize;
+
 	size_t currentSize = 0;
+	size_t currentCapacity = 0;
 
 	//Pointer to the current array of elements
 	T* _current = nullptr;
@@ -29,16 +32,31 @@ private:
 	//Pointer to the initializer_list.
 	pointerToInit currentInit_ = nullptr;
 
+	int lastFreeIndex = 0;
+
 public:
 	nList(initializer_list<T> listToAssign) : currentInit_(&listToAssign)
 	{
-		assignCurrentArray(currentInit_);
+		if (currentInit_ == nullptr || currentInit_->size() == 0)
+		{
+			_current = new T[DEFAULT_SIZE];
+			currentCapacity = DEFAULT_SIZE;
+		}
+		else
+		{
+			assignCurrentArray(currentInit_);
+		}
+
 	}
 
 	nList() = default;
 
 	//TODO add check if X is within the bounds of the list.
 	T& operator[] (int x) {
+		if (x >= currentSize)
+		{
+			return _current[-1];
+		}
 		return _current[x];
 	}
 
@@ -59,6 +77,71 @@ private:
 		_current = new T[currentInit_->size()];
 		copy(currentInit_->begin(), currentInit_->end(), _current);
 		currentSize = currentInit_->size();
+		currentCapacity = currentInit_->size();
+	}
+
+
+
+	void reallocate(int newSize)
+	{
+		if (newSize != -1)
+		{
+			size_t newCapacity = newSize;
+
+			temp = new T[newCapacity];
+
+			for (size_t i = 0; i < currentSize; i++)
+			{
+				temp[i] = _current[i];
+			}
+
+			currentCapacity = newCapacity;
+
+			delete _current;
+
+			_current = new T[newCapacity];
+
+			for (size_t i = 0; i < currentSize; i++)
+			{
+				_current[i] = temp[i];
+			}
+
+			delete[] temp;
+		}
+		else
+		{
+			size_t newCapacity = 0;
+
+			if (currentCapacity == 0)
+			{
+				newCapacity = 2;
+			}
+			else
+			{
+				newCapacity = currentCapacity * 2;
+			}
+
+			temp = new T[newCapacity];
+
+			for (size_t i = 0; i < currentSize; i++)
+			{
+				temp[i] = _current[i];
+			}
+
+			currentCapacity = newCapacity;
+
+			delete _current;
+
+			_current = new T[newCapacity];
+
+			for (size_t i = 0; i < currentSize; i++)
+			{
+				_current[i] = temp[i];
+			}
+
+			delete[] temp;
+		}
+
 	}
 
 public:
@@ -86,82 +169,51 @@ public:
 	/// </summary>
 	void push_back(T itemToAdd)
 	{
-		size_t newSize = currentSize + 1;
 
-		temp = new T[newSize];
-
-		for (size_t i = 0; i < newSize; i++)
+		if (currentSize + 1 > currentCapacity)
 		{
-			temp[i] = _current[i];
+			reallocate(-1);
+			_current[currentSize] = itemToAdd;
+			currentSize += 1;
 		}
-
-		temp[newSize - 1] = itemToAdd;
-
-		currentSize += 1;
-
-		delete _current;
-		_current = new T[currentSize];
-
-		for (size_t i = 0; i < currentSize; i++)
+		else
 		{
-			_current[i] = temp[i];
+			_current[currentSize] = itemToAdd;
+			currentSize++;
 		}
-		delete temp;
 	}
 
 	/// <summary>Removes last item in the vector.
 	/// </summary>
 	void pop_back()
 	{
-		size_t new_size = currentSize - 1;
-
-		temp = new T[new_size];
-
-		for (size_t i = 0; i < new_size; i++)
-		{
-			temp[i] = _current[i];
-		}
-
-
 		currentSize -= 1;
-
-		delete _current;
-		_current = new T[currentSize];
-
-		for (size_t i = 0; i < currentSize; i++)
-		{
-			_current[i] = temp[i];
-		}
-		delete temp;
 	}
 
 	/// <summary>Inserts item at a given position.
 	/// </summary>
-	void insert_at(T itemToInsert, int insertPosition)
+	void insert(T itemToInsert, int insertPosition)
 	{
-		size_t new_size = currentSize + 1;
-		temp = new T[new_size];
 
-		for (size_t i = 0; i < new_size; i++)
+		if (currentSize + 1 > currentCapacity)
 		{
-			temp[i] = _current[i];
+			reallocate(-1);
+			currentSize++;
+			for (int i = currentSize; i >= insertPosition; i--)
+			{
+				_current[i] = _current[i - 1];
+			}
+			_current[insertPosition] = itemToInsert;
 		}
-
-		temp[insertPosition] = itemToInsert;
-
-		currentSize += 1;
-
-		for (int i = insertPosition + 1; i < new_size; i++)
+		else
 		{
-			temp[i] = _current[i - 1];
-		}
-
-		for (int i = 0; i < new_size; i++)
-		{
-			cout << temp[i];
-		}
-
-		delete temp;
+			currentSize++;
+			for (int i = currentSize; i >= insertPosition; i--)
+			{
+				_current[i] = _current[i - 1];
+			}
+			_current[insertPosition] = itemToInsert;
+		}		
 	}
 
 	/// <summary>Removes item in the list based on its value.
@@ -169,7 +221,6 @@ public:
 	void remove(T itemToRemove)
 	{
 		size_t new_size = currentSize - 1;
-
 
 		temp = new T[new_size];
 
@@ -179,9 +230,6 @@ public:
 		{
 			temp[i] = _current[i];
 		}
-
-		//TODO this won't work well for type float. 
-
 
 		for (size_t i = 0; i < currentSize; i++)
 		{
@@ -207,8 +255,6 @@ public:
 
 		}
 
-
-
 		for (size_t i = posToRemoveAt; i < currentSize; i++)
 		{
 			temp[i] = _current[i + 1];
@@ -223,12 +269,12 @@ public:
 			_current[i] = temp[i];
 		}
 
-		delete temp;
+		delete[] temp;
 	}
 
 	/// <summary>Removes the element at a specified position.
 	/// </summary>
-	void remove_at(int posToRemoveAt)
+	void erase(int posToRemoveAt)
 	{
 		size_t new_size = currentSize - 1;
 
@@ -253,8 +299,9 @@ public:
 			_current[i] = temp[i];
 		}
 
-		delete temp;
+		delete[] temp;
 	}
+
 
 	/// <summary>Removes all data from the array.
 	/// </summary>
@@ -298,6 +345,10 @@ public:
 		return currentSize;
 	}
 
+	int capacity()
+	{
+		return currentCapacity;
+	}
 	/// <summary>Returns pointer to the array used to store the elements of the vector.
 	/// </summary>
 	T* data()
@@ -305,6 +356,21 @@ public:
 		return _current;
 	}
 
+	void resize(int newSize)
+	{
+		if (newSize >= currentSize)
+		{
+			reallocate(newSize);
+		}
+	}
+
+	void reserve(int newSize)
+	{
+		if(newSize > currentCapacity && newSize > currentSize)
+		{
+			reallocate(newSize);
+		}
+	}
 private:
 
 };
