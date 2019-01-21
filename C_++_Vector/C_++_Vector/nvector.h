@@ -68,7 +68,7 @@ private:
 	void assignCurrentArray(pointerToInit listToAssign)
 	{
 		_current = new T[currentInit_->size()];
-		copy(currentInit_->begin(), currentInit_->end(), _current);
+		copy(currentInit_->begin(), currentInit_->back(), _current);
 		currentSize = currentInit_->size();
 		currentCapacity = currentInit_->size();
 	}
@@ -77,6 +77,11 @@ private:
 	{
 		if (newSize != -1)
 		{
+			if (newSize < currentSize)
+			{
+				currentSize = newSize;
+			}
+
 			size_t newCapacity = newSize;
 
 			temp = new T[newCapacity];
@@ -135,7 +140,7 @@ private:
 
 	}
 
-public:	 	
+public:
 #pragma region Capacity
 	/// <summary>Returns an integer equal to the size of the current vector.
 	/// </summary>
@@ -146,21 +151,49 @@ public:
 
 	//TODO Max Size
 
-	void resize(int newSize)
+	/// <summary>Resizes the container so that it contains n elements.
+	/// </summary>
+	void resize(int newSize, T value = NULL)
 	{
-		if (newSize >= currentSize)
+		if (newSize < currentSize)
 		{
 			reallocate(newSize);
 		}
+
+		if (newSize > currentSize)
+		{
+			if (newSize > currentCapacity)
+			{
+				reallocate(-1);
+				for (int i = currentSize; i < newSize; i++)
+				{
+					_current[i] = value;
+					currentSize++;
+				}
+			}
+		}
 	}
 
+	/// <summary>Returns the size of the storage space currently allocated for the vector, expressed in terms of elements.
+	/// </summary>
 	int capacity()
 	{
 		return currentCapacity;
 	}
 
-	//TODO empty
+	/// <summary>Returns whether the vector is empty (i.e. whether its size is 0).
+	/// </summary>
+	bool empty()
+	{
+		if (currentSize == 0)
+		{
+			return true;
+		}
+		return false;
+	}
 
+	/// <summary>Requests that the vector capacity be at least enough to contain n elements.
+	/// </summary>
 	void reserve(int newSize)
 	{
 		if (newSize > currentCapacity && newSize > currentSize)
@@ -169,8 +202,12 @@ public:
 		}
 	}
 
-	//TODO shrink_to_fit
-
+	/// <summary>Requests the container to reduce its capacity to fit its size.
+	/// </summary>
+	void shrink_to_fit()
+	{
+		reallocate(currentSize);
+	}
 #pragma endregion 
 
 #pragma region Element Access
@@ -182,6 +219,8 @@ public:
 		return _current[x];
 	}
 
+	/// <summary>Returns a reference to the element at position n in the vector.
+	/// </summary>
 	T& at(int x)
 	{
 		if (x <= currentSize)
@@ -200,7 +239,7 @@ public:
 
 	/// <summary>Returns last element of the vector.
 	/// </summary>
-	T end()
+	T back()
 	{
 		return _current[currentSize - 1];
 	}
@@ -214,12 +253,18 @@ public:
 #pragma endregion 
 
 #pragma region Modifiers
-	void assign(T* vectorToAssign)
+	/// <summary>Assigns new contents to the vector, replacing its current contents, and modifying its size accordingly.
+    /// </summary>
+	void assign(int size, T value = NULL)
 	{
-
+		currentSize = size;
+		for(int i = 0; i < currentSize; i++)
+		{
+			_current[i] = value;
+		}
 	}
 
-	/// <summary>Adds item to the end of the vector.
+	/// <summary>Adds item to the back of the vector.
 	/// </summary>
 	void push_back(T itemToAdd)
 	{
@@ -243,8 +288,7 @@ public:
 	{
 		currentSize -= 1;
 	}
-
-
+	
 	/// <summary>Inserts item at a given position.
 	/// </summary>
 	void insert(T itemToInsert, int insertPosition)
@@ -375,7 +419,7 @@ public:
 	}
 
 	/// <summary>Finds the position a given element is located.
-    /// </summary>
+	/// </summary>
 	int find(T itemToFind)
 	{
 		for (int i = 0; i < currentSize; i++)
@@ -390,7 +434,7 @@ public:
 	}
 
 	/// <summary>Swaps the value of pos_1 with the value at pos_2 and vice versa.	
-    /// </summary>
+	/// </summary>
 	void swap_values(int pos_1, int pos_2)
 	{
 		T temp_1 = _current[pos_1];
