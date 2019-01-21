@@ -1,5 +1,6 @@
 # My implementation of the vector in C++
 This is my own version of the vector class in C++ called **nList**. Below is are all the member functions that are available. If you find any bugs feel free to open an issue and I'll look into it!
+### Version: 1.0.0
 
 # Member functions for Capacity
 
