@@ -44,7 +44,7 @@ public:
 		}
 		else
 		{
-			assignCurrentArray(currentInit_);
+			assignCurrentArray();
 		}
 
 	}
@@ -64,11 +64,10 @@ public:
 	}
 
 private:
-	//At the moment it just assigns the first element of currentInit to the first element of current.
-	void assignCurrentArray(pointerToInit listToAssign)
+	void assignCurrentArray()
 	{
 		_current = new T[currentInit_->size()];
-		copy(currentInit_->begin(), currentInit_->back(), _current);
+		copy(currentInit_->begin(), currentInit_->end(), _current);
 		currentSize = currentInit_->size();
 		currentCapacity = currentInit_->size();
 	}
@@ -239,7 +238,7 @@ public:
 
 	/// <summary>Returns last element of the vector.
 	/// </summary>
-	T back()
+	T end()
 	{
 		return _current[currentSize - 1];
 	}
@@ -264,7 +263,7 @@ public:
 		}
 	}
 
-	/// <summary>Adds item to the back of the vector.
+	/// <summary>Adds item to the end of the vector.
 	/// </summary>
 	void push_back(T itemToAdd)
 	{

@@ -1,17 +1,45 @@
 ﻿  C_++_Vector.cpp
-d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(206): warning C4018: '>=': signed/unsigned mismatch
-  d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(205): note: while compiling class template member function 'T &nList<T>::operator [](int)'
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(40): error C2678: binary '==': no operator found which takes a left-hand operand of type 'std::initializer_list<T>' (or there is no acceptable conversion)
           with
           [
               T=double
           ]
-  d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(36): note: see reference to function template instantiation 'T &nList<T>::operator [](int)' being compiled
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\system_error(284): note: could be 'bool std::operator ==(const std::error_condition &,const std::error_condition &) noexcept' [found using argument-dependent lookup]
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\system_error(278): note: or       'bool std::operator ==(const std::error_condition &,const std::error_code &) noexcept' [found using argument-dependent lookup]
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\system_error(272): note: or       'bool std::operator ==(const std::error_code &,const std::error_condition &) noexcept' [found using argument-dependent lookup]
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\system_error(266): note: or       'bool std::operator ==(const std::error_code &,const std::error_code &) noexcept' [found using argument-dependent lookup]
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\exception(331): note: or       'bool std::operator ==(const std::exception_ptr &,std::nullptr_t) noexcept' [found using argument-dependent lookup]
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\exception(326): note: or       'bool std::operator ==(std::nullptr_t,const std::exception_ptr &) noexcept' [found using argument-dependent lookup]
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\exception(321): note: or       'bool std::operator ==(const std::exception_ptr &,const std::exception_ptr &) noexcept' [found using argument-dependent lookup]
+  d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(40): note: while trying to match the argument list '(std::initializer_list<T>, nullptr)'
+          with
+          [
+              T=double
+          ]
+  d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(38): note: while compiling class template member function 'nList<double>::nList(std::initializer_list<T>)'
+          with
+          [
+              T=double
+          ]
+  d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(11): note: see reference to function template instantiation 'nList<double>::nList(std::initializer_list<T>)' being compiled
           with
           [
               T=double
           ]
   d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\c_++_vector.cpp(11): note: see reference to class template instantiation 'nList<double>' being compiled
-d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(80): warning C4018: '<': signed/unsigned mismatch
-  d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(77): note: while compiling class template member function 'void nList<double>::reallocate(int)'
-  d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(257): note: see reference to function template instantiation 'void nList<double>::reallocate(int)' being compiled
-  C_++_Vector.vcxproj -> D:\Documents\Learning\C++\C_++_Vector\C_Plus_Plus_Vector\C_++_Vector\Debug\C_++_Vector.exe
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(40): error C2819: type 'std::initializer_list<T>' does not have an overloaded member 'operator ->'
+          with
+          [
+              T=double
+          ]
+  d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(16): note: see declaration of 'std::initializer_list<T>'
+          with
+          [
+              T=double
+          ]
+  d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(40): note: did you intend to use '.' instead?
+d:\documents\learning\c++\c_++_vector\c_plus_plus_vector\c_++_vector\c_++_vector\nvector.h(40): error C2232: '->std::initializer_list<T>::size': left operand has 'class' type, use '.'
+          with
+          [
+              T=double
+          ]
