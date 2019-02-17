@@ -5,11 +5,6 @@
 
 using namespace std;
 
-//TODO Make sure it works properly for floats.
-//TODO push_back error handling for all functions!
-//TODO push_back input validation!
-//TODO Learn to throw exceptions.
-
 template<class T>
 class nList
 {
@@ -18,7 +13,6 @@ class nList
 private:
 	const double EPS = 0.001;
 	const int DEFAULT_SIZE = 1;
-	//	size_t defaultSize = (listSize != 0) ? 0 : listSize;
 
 	size_t currentSize = 0;
 	size_t currentCapacity = 0;
@@ -29,14 +23,13 @@ private:
 	//Pointer for the temporary array of elements used when adding/removing elements.
 	T* temp = nullptr;
 
-	//Pointer to the initializer_list.
-	pointerToInit currentInit_ = nullptr;
-
 	int lastFreeIndex = 0;
 
 public:
-	nList(initializer_list<T> listToAssign) : currentInit_(&listToAssign)
-	{
+	nList(initializer_list<T> listToAssign)
+	{		
+		pointerToInit currentInit_ = &listToAssign;
+
 		if (currentInit_ == nullptr || currentInit_->size() == 0)
 		{
 			_current = new T[DEFAULT_SIZE];
@@ -44,14 +37,12 @@ public:
 		}
 		else
 		{
-			assignCurrentArray();
+			assignCurrentArray(currentInit_);
 		}
 
 	}
 
 	nList() = default;
-
-	//TODO add check if X is within the bounds of the list.
 
 	void operator = (const nList& D) {
 
@@ -64,7 +55,7 @@ public:
 	}
 
 private:
-	void assignCurrentArray()
+	void assignCurrentArray(pointerToInit currentInit_)
 	{
 		_current = new T[currentInit_->size()];
 		copy(currentInit_->begin(), currentInit_->end(), _current);
@@ -148,8 +139,6 @@ public:
 		return currentSize;
 	}
 
-	//TODO Max Size
-
 	/// <summary>Resizes the container so that it contains n elements.
 	/// </summary>
 	void resize(int newSize, T value = NULL)
@@ -211,10 +200,8 @@ public:
 
 #pragma region Element Access
 	T& operator[] (int x) {
-		if (x >= currentSize)
-		{
-			return _current[-1];
-		}
+
+		assert(x < currentSize);		
 		return _current[x];
 	}
 
@@ -222,11 +209,8 @@ public:
 	/// </summary>
 	T& at(int x)
 	{
-		if (x <= currentSize)
-		{
-			return _current[x];
-		}
-		return _current[-1];
+		assert(x <= currentSize);
+		return _current[x];
 	}
 
 	/// <summary>Returns first element of the vector.
@@ -267,18 +251,13 @@ public:
 	/// </summary>
 	void push_back(T itemToAdd)
 	{
-
 		if (currentSize + 1 > currentCapacity)
 		{
-			reallocate(-1);
-			_current[currentSize] = itemToAdd;
-			currentSize += 1;
+			reallocate(-1);			
 		}
-		else
-		{
-			_current[currentSize] = itemToAdd;
-			currentSize++;
-		}
+
+		_current[currentSize] = itemToAdd;
+		currentSize++;
 	}
 
 	/// <summary>Removes last item in the vector.
@@ -296,22 +275,14 @@ public:
 		if (currentSize + 1 > currentCapacity)
 		{
 			reallocate(-1);
-			currentSize++;
-			for (int i = currentSize; i >= insertPosition; i--)
-			{
-				_current[i] = _current[i - 1];
-			}
-			_current[insertPosition] = itemToInsert;
 		}
-		else
+
+		currentSize++;
+		for (int i = currentSize; i >= insertPosition; i--)
 		{
-			currentSize++;
-			for (int i = currentSize; i >= insertPosition; i--)
-			{
-				_current[i] = _current[i - 1];
-			}
-			_current[insertPosition] = itemToInsert;
+			_current[i] = _current[i - 1];
 		}
+		_current[insertPosition] = itemToInsert;
 	}
 
 	/// <summary>Removes the element at a specified position.
@@ -355,9 +326,6 @@ public:
 		currentSize = 0;
 	}
 
-	//TODO emplace
-
-	//TODO emplace_back
 #pragma endregion 
 
 #pragma region Custom
@@ -397,7 +365,6 @@ public:
 					break;
 				}
 			}
-
 		}
 
 		for (size_t i = posToRemoveAt; i < currentSize; i++)
